@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sonnenschein</string>
+    <string name="inputPlace">输入地址</string>
+    <string name="NonPlaceToast">未能查询到任何地点</string>
+</resources>
