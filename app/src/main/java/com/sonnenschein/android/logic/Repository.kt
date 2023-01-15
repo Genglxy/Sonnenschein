@@ -1,7 +1,7 @@
 package com.sonnenschein.android.logic
 
 import androidx.lifecycle.liveData
-import com.sonnenschein.android.logic.model.Place
+import com.sonnenschein.android.logic.model.PlaceResponse
 import com.sonnenschein.android.logic.network.SonnenscheinNetwork
 import kotlinx.coroutines.Dispatchers
 
@@ -17,7 +17,7 @@ object Repository {
                 Result.failure(java.lang.RuntimeException("response status is ${placeResponse.status}"))
             }
         } catch (e: Exception) {
-            Result.failure<List<Place>>(e)
+            Result.failure<List<PlaceResponse.Place>>(e)
         }
         emit(result)
     }
