@@ -24,23 +24,24 @@ object Repository {
 
     fun refreshWeather(lng: String, lat: String) = fire(Dispatchers.IO) {
         coroutineScope {
-            val deferredRealtime = async {
-                SonnenscheinNetwork.getRealtimeWeather(lng, lat)
+            val deferredGeneral = async {
+                SonnenscheinNetwork.getGeneralWeather(lng, lat)
             }
-            val deferredDaily = async {
-                SonnenscheinNetwork.getDailyWeather(lng, lat)
-            }
-            val realtimeResponse = deferredRealtime.await()
-            val dailyResponse = deferredDaily.await()
-            if (realtimeResponse.status == "ok" && dailyResponse.status == "ok") {
+            //val deferredRealtime = async { SonnenscheinNetwork.getRealtimeWeather(lng, lat) }
+            //val deferredDaily = async { SonnenscheinNetwork.getDailyWeather(lng, lat) }
+            val generalResponse = deferredGeneral.await()
+            //val realtimeResponse = deferredRealtime.await()
+            //val dailyResponse = deferredDaily.await()
+            //if (realtimeResponse.status == "ok" && dailyResponse.status == "ok") {
+            if (generalResponse.status == "ok") {
                 val weather =
-                    Weather(realtimeResponse.result.realtime, dailyResponse.result.daily)
+                    Weather(generalResponse.result.realtime, generalResponse.result.daily)
                 Result.success(weather)
             } else {
                 Result.failure(
                     RuntimeException(
-                        "realtime response status is ${realtimeResponse.status}, " +
-                                "daily response status is ${dailyResponse.status}"
+                        "realtime response status is ${generalResponse.status}"
+                        //"realtime response status is ${realtimeResponse.status}, daily response status is ${dailyResponse.status}"
                     )
                 )
             }
