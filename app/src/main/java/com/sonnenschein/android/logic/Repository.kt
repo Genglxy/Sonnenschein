@@ -1,6 +1,8 @@
 package com.sonnenschein.android.logic
 
 import androidx.lifecycle.liveData
+import com.sonnenschein.android.logic.dao.PlaceDao
+import com.sonnenschein.android.logic.model.PlaceResponse
 import com.sonnenschein.android.logic.model.Weather
 import com.sonnenschein.android.logic.network.SonnenscheinNetwork
 import kotlinx.coroutines.Dispatchers
@@ -54,4 +56,12 @@ object Repository {
             }
             emit(result)
         }
+
+    //后期使用线程实现
+    fun savePlace(place: PlaceResponse.Place) = PlaceDao.savePlace(place)
+
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlacedSaved()
+
 }
