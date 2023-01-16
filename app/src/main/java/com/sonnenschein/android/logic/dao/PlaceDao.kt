@@ -8,6 +8,7 @@ import com.sonnenschein.android.SonnenscheinApplication
 import com.sonnenschein.android.logic.model.PlaceResponse
 
 object PlaceDao {
+
     fun savePlace(place: PlaceResponse.Place) {
         sharedPreferences().edit {
             putString("place", Gson().toJson(place))

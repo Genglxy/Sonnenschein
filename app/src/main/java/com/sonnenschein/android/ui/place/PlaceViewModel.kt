@@ -4,7 +4,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.sonnenschein.android.logic.Repository
-import com.sonnenschein.android.logic.dao.PlaceDao
 import com.sonnenschein.android.logic.model.PlaceResponse
 
 class PlaceViewModel : ViewModel() {
