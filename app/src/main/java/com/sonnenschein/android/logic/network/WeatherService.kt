@@ -7,6 +7,7 @@ import com.sonnenschein.android.logic.model.RealtimeResponse
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface WeatherService {
 
@@ -14,13 +15,15 @@ interface WeatherService {
     fun getRealtimeWeather(
         @Path("lng") lng: String,
         @Path("lat") lat: String,
-        @Path("token") token: String = SonnenscheinApplication.context.getString(R.string.token)
+        @Path("token") token: String = SonnenscheinApplication.context.getString(R.string.token),
+        @Query("lang") lang: String = SonnenscheinApplication.context.getString(R.string.language)
     ): Call<RealtimeResponse>
 
     @GET("v2.6/{token}/{lng},{lat}/daily.json")
     fun getDailyWeather(
         @Path("lng") lng: String,
         @Path("lat") lat: String,
-        @Path("token") token: String = SonnenscheinApplication.context.getString(R.string.token)
+        @Path("token") token: String = SonnenscheinApplication.context.getString(R.string.token),
+        @Query("lang") lang: String = SonnenscheinApplication.context.getString(R.string.language)
     ): Call<DailyResponse>
 }
