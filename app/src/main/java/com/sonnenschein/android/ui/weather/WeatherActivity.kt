@@ -60,7 +60,7 @@ class WeatherActivity : AppCompatActivity() {
             }
             swipeRefresh.isRefreshing = false
         })
-        swipeRefresh.setColorSchemeResources(com.google.android.material.R.color.design_default_color_primary)
+        swipeRefresh.setColorSchemeResources(R.color.blue_700)
         refreshWeather()
         swipeRefresh.setOnRefreshListener {
             refreshWeather()
