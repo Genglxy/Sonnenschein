@@ -9,6 +9,14 @@ import kotlin.coroutines.suspendCoroutine
 
 object SonnenscheinNetwork {
 
+    private val weatherService = ServiceCreator.create(WeatherService::class.java)
+
+    suspend fun getRealtimeWeather(lng: String, lat: String) =
+        weatherService.getRealtimeWeather(lng, lat).await()
+
+    suspend fun getDailyWeather(lng: String, lat: String) =
+        weatherService.getDailyWeather(lng, lat).await()
+
     private val placeService = ServiceCreator.create<PlaceService>()
 
     suspend fun searchPlaces(query: String) = placeService.searchPlaces(query).await()
@@ -30,5 +38,4 @@ object SonnenscheinNetwork {
             })
         }
     }
-
 }

@@ -12,9 +12,8 @@ interface PlaceService {
     @GET("v2/place?token=lang=zh_CN")
     fun searchPlaces(
         @Query("query") query: String,
-        @Query("token") token: String = SonnenscheinApplication.context.getString(
-            R.string.Token
-        )
+        @Query("lang") lang: String = "zh_CN",
+        @Query("token") token: String = SonnenscheinApplication.context.getString(R.string.token)
     ): Call<PlaceResponse>
 
 }

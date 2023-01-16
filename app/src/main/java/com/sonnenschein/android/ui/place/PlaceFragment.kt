@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.sonnenschein.android.R
 
-class PlaceFragment: Fragment() {
+class PlaceFragment : Fragment() {
 
     val viewModel by lazy {
         ViewModelProvider(this).get(PlaceViewModel::class.java)
@@ -60,10 +60,10 @@ class PlaceFragment: Fragment() {
                 viewModel.placeList.addAll(places)
                 adapter.notifyDataSetChanged()
             } else {
-                Toast.makeText(activity, getString(R.string.NonPlaceToast), Toast.LENGTH_SHORT).show()
+                Toast.makeText(activity, getString(R.string.non_place_toast), Toast.LENGTH_SHORT)
+                    .show()
                 result.exceptionOrNull()?.printStackTrace()
             }
         })
     }
-
 }
